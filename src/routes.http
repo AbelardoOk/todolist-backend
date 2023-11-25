@@ -1,7 +1,22 @@
-POST http://[::1]:3333/signin
+POST http://[::1]:3333/register
 Content-Type: application/json
 
 { 
   "name": "João",
-  "email": "joaogamer@gmail.com" 
+  "email": "joaogamer@gmail.com", 
+  "password": "senha123"
+}
+
+###
+
+GET http://[::1]:3333/users
+
+###
+
+POST http://[::1]:3333/login
+Content-Type: application/json
+
+{ 
+  "email": "joaogamer@gmail.com",
+  "password": "senha123" 
 }

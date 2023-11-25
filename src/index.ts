@@ -10,11 +10,18 @@ server.get("/users", async (request, reply) => {
   return prisma.user.findMany();
 });
 
-server.post("/signin", async (request, reply) => {
-  const { name, email } = request.body as any;
+server.post("/register", async (request, reply) => {
+  const { name, email, password } = request.body as any;
   console.log(name, email);
 
-  await database.signIn(name, email);
+  await database.register(name, email, password);
+});
+
+server.post("/login", async (request, reply) => {
+  const { email, password } = request.body as any;
+  console.log(email, password);
+
+  await database.login(email, password);
 });
 
 server.listen({ port: 3333 }, (err, adress) => {
