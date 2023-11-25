@@ -34,3 +34,11 @@ Content-Type: application/json
   "tittle": "Tarefa 2",
   "content": "Descrição da tarefa 2, oq fazer e tals tlgd asdasd"
 }
+
+###
+
+DELETE http://[::1]:3333/deletetask/1/3
+
+###
+
+PUT http://[::1]:3333/completed/1/2

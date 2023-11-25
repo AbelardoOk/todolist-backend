@@ -56,6 +56,16 @@ server.delete<{ Params: { id1: number; id2: number } }>("/deletetask/:id1/:id2",
   });
 });
 
+server.put<{ Params: { id1: number; id2: number } }>("/completed/:id1/:id2", async (request, reply) => {
+  const authorId: number = Number(request.params.id1);
+  const taskId: number = Number(request.params.id2);
+
+  await prisma.post.update({
+    where: { id: taskId, authorId: authorId },
+    data: { state: "completa" },
+  });
+});
+
 // Host
 server.listen({ port: 3333 }, (err, adress) => {
   if (err) {
