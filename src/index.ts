@@ -66,6 +66,30 @@ server.put<{ Params: { id1: number; id2: number } }>("/completed/:id1/:id2", asy
   });
 });
 
+server.post<{ Params: { id: number } }>("/search/:id", async (request, reply) => {
+  const authorId: number = Number(request.params.id);
+  const { search } = request.body as any;
+
+  try {
+    const posts = await prisma.post.findMany({
+      where: {
+        authorId: authorId,
+        tittle: {
+          contains: search,
+        },
+        content: {
+          contains: search,
+        },
+      },
+    });
+
+    return posts;
+  } catch (error) {
+    console.error("Erro na consulta:", error);
+    reply.status(500).send("Erro interno do servidor");
+  }
+});
+
 // Host
 server.listen({ port: 3333 }, (err, adress) => {
   if (err) {

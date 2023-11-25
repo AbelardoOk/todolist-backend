@@ -2,8 +2,8 @@ POST http://[::1]:3333/register
 Content-Type: application/json
 
 { 
-  "name": "João",
-  "email": "joaogamer@gmail.com", 
+  "name": "Maria",
+  "email": "mariajoaquina@gmail.com", 
   "password": "senha123"
 }
 
@@ -31,14 +31,23 @@ POST http://[::1]:3333/createtask/1
 Content-Type: application/json
 
 {
-  "tittle": "Tarefa 2",
-  "content": "Descrição da tarefa 2, oq fazer e tals tlgd asdasd"
+  "tittle": "Tirar o lixo",
+  "content": "Tem que tirar o lixo até amanha"
 }
 
 ###
 
-DELETE http://[::1]:3333/deletetask/1/3
+DELETE http://[::1]:3333/deletetask/1/6
 
 ###
 
 PUT http://[::1]:3333/completed/1/2
+
+###
+
+POST http://[::1]:3333/search/1
+Content-Type: application/json
+
+{
+  "search": "a"
+}
