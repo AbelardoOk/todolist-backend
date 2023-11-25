@@ -16,8 +16,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node index.js",
-    "dev": "npx nodemon index.ts"
+    "start": "node src/index.js",
+    "dev": "npx nodemon src/index.ts"
   },
   "keywords": [],
   "author": "",

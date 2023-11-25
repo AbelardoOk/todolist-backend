@@ -1,0 +1,7 @@
+POST http://[::1]:3333/signin
+Content-Type: application/json
+
+{ 
+  "name": "João",
+  "email": "joaogamer@gmail.com" 
+}
