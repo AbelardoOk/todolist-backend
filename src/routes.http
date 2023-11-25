@@ -20,3 +20,17 @@ Content-Type: application/json
   "email": "joaogamer@gmail.com",
   "password": "senha123" 
 }
+
+###
+
+GET http://[::1]:3333/tasks/1
+
+###
+
+POST http://[::1]:3333/createtask/1
+Content-Type: application/json
+
+{
+  "tittle": "Tarefa 2",
+  "content": "Descrição da tarefa 2, oq fazer e tals tlgd asdasd"
+}

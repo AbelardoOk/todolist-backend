@@ -25,4 +25,17 @@ export class dbRoutes {
       console.log("Email ou senha incorretos");
     }
   }
+
+  async createTask(tittle: string, content: string, authorId: number) {
+    await prisma.post.create({
+      data: {
+        tittle: tittle,
+        content: content,
+        state: "Pendente",
+        authorId: authorId,
+      },
+    });
+
+    console.log("Tarefa criada com sucesso!");
+  }
 }

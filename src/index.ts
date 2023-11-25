@@ -6,6 +6,8 @@ const server = fastify();
 const prisma = new PrismaClient();
 const database = new dbRoutes();
 
+// Login/Registro
+
 server.get("/users", async (request, reply) => {
   return prisma.user.findMany();
 });
@@ -24,6 +26,37 @@ server.post("/login", async (request, reply) => {
   await database.login(email, password);
 });
 
+// Tasks
+
+server.get<{ Params: { id: number } }>("/tasks/:id", async (request, reply) => {
+  const userId: number = Number(request.params.id);
+  return prisma.post.findMany({
+    where: {
+      authorId: userId,
+    },
+  });
+});
+
+server.post<{ Params: { id: number } }>("/createtask/:id", async (request, reply) => {
+  const authorId: number = Number(request.params.id);
+  const { tittle, content } = request.body as any;
+
+  await database.createTask(tittle, content, authorId);
+});
+
+server.delete<{ Params: { id1: number; id2: number } }>("/deletetask/:id1/:id2", async (request, reply) => {
+  const authorId: number = Number(request.params.id1);
+  const taskId: number = Number(request.params.id2);
+
+  await prisma.post.delete({
+    where: {
+      id: taskId,
+      authorId: authorId,
+    },
+  });
+});
+
+// Host
 server.listen({ port: 3333 }, (err, adress) => {
   if (err) {
     console.error(err);
